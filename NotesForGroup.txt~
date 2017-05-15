@@ -1,0 +1,43 @@
+/home/ben33/next_paper
+
+is a fresh directory to work from.
+
+$ chmod a+rw -R /home/ben33/NEXT_project/
+
+has been run and should (hopefully) guarantee the ability of myself, Ryan, and Nick to all edit (read, write)
+files in the "next_paper" directory.
+
+Notice that NEXTDNN git directory has been cloned INSIDE of dlkit, which was one of myself and Nick's original
+issues.
+
+Make sure first thing before running any training, to be inside the dlkit directory and run the setup.sh file with:
+$ . setup.sh
+
+to run a training, the syntax is as expected (assuring that you are inside dlkit):
+
+$ python -m NEXTDNN.ClassificationExperiment.py
+
+Loading a model should simply be the above + the addition of the following flag
+
+--LoadModel /path/to/model
+
+which in our case, all of our models will be in the TrainedModels directory. So:
+
+$ python -m NEXTDNN.ClassificationExperiment.py --LoadModel /TrainedModels/[[Saved Model Name Here]]
+
+
+
+
+
+
+Problems:
+
+Dense layers have hardcoded output dimensions.
+
+Pooling or Conv3D require 5 input dim : batchsize channels then dim1 2 3
+with channels_first
+default is channels_last
+since don't really have 'channels' consider Conv2D
+
+What is self.inputT=input
+and self.modelT=modelT
